@@ -1,0 +1,188 @@
+ 
+<RelativeLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"  
+    xmlns:tools="http://schemas.android.com/tools"  
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent"  
+    android:paddingBottom="@dimen/activity_vertical_margin"  
+    android:paddingLeft="@dimen/activity_horizontal_margin"  
+    android:paddingRight="@dimen/activity_horizontal_margin"  
+    android:paddingTop="@dimen/activity_vertical_margin"  
+    tools:context=".MainActivity" >  
+  
+    <LinearLayout  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"  
+        android:gravity="center"  
+        android:orientation="vertical"  
+        android:padding="20dp" >  
+  
+        <Button  
+            android:id="@+id/btnWeb"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:text="Open Webpage" />  
+  
+        <Button  
+            android:id="@+id/btnCall"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_marginTop="10dp"  
+            android:text="Make a Call" />  
+  
+        <Button  
+            android:id="@+id/btnSMS"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_marginTop="10dp"  
+            android:text="Send SMS" />  
+  
+        <Button  
+            android:id="@+id/btnCamera"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_marginTop="10dp"  
+            android:text="Open Camera" />  
+  
+        <Button  
+            android:id="@+id/btnNext"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_marginTop="10dp"  
+            android:text="Next Activity" />  
+    </LinearLayout>  
+  
+</RelativeLayout>  
+  
+  
+ MainActivity.java  
+package com.example.six;  
+  
+import android.app.Activity;  
+import android.content.Intent;  
+import android.net.Uri;  
+import android.os.Bundle;  
+import android.provider.MediaStore;  
+import android.view.View;  
+import android.widget.Button;  
+  
+public class MainActivity extends Activity {  
+   
+ Button btnWeb, btnCall, btnSMS, btnCamera, btnNext;  
+  
+    @Override  
+    protected void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.activity_main);  
+        btnWeb = (Button) findViewById(R.id.btnWeb);  
+        btnCall = (Button) findViewById(R.id.btnCall);  
+        btnSMS = (Button) findViewById(R.id.btnSMS);  
+        btnCamera = (Button) findViewById(R.id.btnCamera);  
+        btnNext = (Button) findViewById(R.id.btnNext);  
+  
+        // Open Webpage  
+        btnWeb.setOnClickListener(new View.OnClickListener() {  
+            @Override  
+            public void onClick(View v) {  
+                Intent webIntent = new Intent(Intent.ACTION_VIEW,  
+Uri.parse("https://www.google.com"));  
+                startActivity(webIntent);  
+            }  
+        });  
+  
+        // Make a Phone Call  
+        btnCall.setOnClickListener(new View.OnClickListener() {  
+            @Override  
+            public void onClick(View v) {  
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);  
+                callIntent.setData(Uri.parse("tel:1234567890"));  
+                startActivity(callIntent);  
+            }  
+        });  
+  
+        // Send SMS  
+        btnSMS.setOnClickListener(new View.OnClickListener() {  
+            @Override  
+            public void onClick(View v) {  
+                Intent smsIntent = new Intent(Intent.ACTION_SENDTO);  
+                smsIntent.setData(Uri.parse("smsto:9876543210"));  
+                smsIntent.putExtra("sms_body", "Hello! This is a test SMS.");  
+                startActivity(smsIntent);  
+            }  
+        });  
+  
+        // Open Camera  
+        btnCamera.setOnClickListener(new View.OnClickListener() {  
+            @Override  
+            public void onClick(View v) {  
+                Intent cameraIntent = new 
+Intent(MediaStore.ACTION_IMAGE_CAPTURE);  
+                startActivity(cameraIntent);  
+            }  
+        });  
+  
+        // Move to Next Activity (Explicit Intent)  
+        btnNext.setOnClickListener(new View.OnClickListener() {  
+            @Override  
+            public void onClick(View v) {  
+                Intent nextIntent = new Intent(MainActivity.this, 
+SecondActivity.class);  
+                startActivity(nextIntent);  
+            }  
+        });  
+    }  
+}  
+  
+  
+AndroidMainfest.xml  
+<?xml version="1.0" encoding="utf-8"?>  
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"  
+    package="com.example.six"  
+    android:versionCode="1"  
+    android:versionName="1.0" >  
+  
+    <uses-sdk  
+        android:minSdkVersion="8"  
+        android:targetSdkVersion="18" />  
+    <uses-permission 
+android:name="android.permission.CALL_PHONE"/>  
+    <uses-permission android:name="android.permission.SEND_SMS"/>  
+    <uses-permission android:name="android.permission.CAMERA"/>  
+  
+    <application  
+        android:allowBackup="true"  
+        android:icon="@drawable/ic_launcher"  
+        android:label="@string/app_name"  
+        android:theme="@style/AppTheme" >  
+        <activity  
+            android:name="com.example.six.MainActivity"  
+            android:label="@string/app_name" >  
+            <intent-filter>  
+                <action android:name="android.intent.action.MAIN" />  
+  
+                <category android:name="android.intent.category.LAUNCHER" 
+/>  
+            </intent-filter>  
+        </activity>  
+        <activity android:name=".SecondActivity"></activity>  
+    </application>  
+  
+</manifest>  
+  
+ SecondActivity.java  
+package com.example.six;  
+  
+import android.app.Activity;  
+import android.os.Bundle;  
+import android.widget.TextView;  
+  
+public class SecondActivity extends Activity{  
+  @Override  
+     protected void onCreate(Bundle savedInstanceState) {  
+         super.onCreate(savedInstanceState);  
+         TextView tv = new TextView(this);  
+         tv.setText("Welcome to Second Activity (Explicit Intent)");  
+         tv.setTextSize(20);  
+         setContentView(tv);  
+     }  
+}  
