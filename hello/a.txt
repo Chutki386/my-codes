@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="prog01.php" method="get">
+    <input type="radio" name="choice" value="1"> Sum of Digits<br>
+    <input type="radio" name="choice" value="2"> Factorial<br>
+    <input type="text" name="b"><br><br>
+    <input type="submit" value="Submit"><br>
+</form>
+<?php
+if (isset($_GET["choice"]) && isset($_GET["b"])) {
+    $n = (int)$_GET["b"];
+    $choice = (int)$_GET["choice"];
+    switch ($choice) {
+        case 1:
+            $sum = array_sum(str_split(abs($n)));
+            echo "<p>Sum of digits of $n is: $sum</p>";
+            break;
+        case 2:
+            if ($n < 0) {
+                echo "<p>Factorial not defined for negative numbers.</p>";
+            } else {
+                $factorial = ($n == 0) ? 1 : array_product(range(1, $n));
+                echo "<p>Factorial of $n is: $factorial</p>";
+            }
+            break;
+        default:
+            echo "<p>Invalid choice</p>";
+    }
+}
+?>
+</body>
+</html>

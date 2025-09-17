@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Functions</title>
+</head>
+<body>
+    <?php
+    $str = "Helloo world";
+    echo "String: .$str <br>";
+    echo "Length:" .strlen($str)."<br>";
+    echo "Upppercase:" .strtoupper($str). "<br>";
+    echo "lowercase:" .strtolower($str)."<br>";
+    echo "Reverse:" .strrev($str)."<br>";
+
+    $num = 7.5;
+    echo "Number: $num <br>";
+    echo "Ceiling:".ceil($num)."<br>";
+    echo "Floor:".floor($num)."<br>";
+    echo "Squareroot:".sqrt(25)."<br>";
+    echo "Absolute:" .abs($num)."<br>";
+
+    echo "Current date".date("Y-m-d"). "<br>";
+    echo "Currentdate and time".date("Y/m/d h:i:s"). "<br>";
+    echo "Current year".date("Y") ."<br>";
+    ?>
+    </body>
+    </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>COLLEGE HOMEPAGE</title>
+<style>
+body {
+ background-color: #ef6;
+ margin:0;
+}
+.header1 {
+ display:flex;
+ color: white;
+ background-color: grey;
+ padding: 5px;
+}
+ul {
+ display:flex;
+}
+li {
+ list-style:none;
+ padding:0 15px;
+}
+.headlist {
+ text-decoration:none;
+ font-size:20px;
+}
+.mainclass {
+ background-image:url("data:image/jpeg");
+ background-repeat:no-repeat;
+ background-size:cover;
+ height:630px;
+ text-align:center;
+}
+.contact {
+ text-align:left;
+ padding-left: 15px;
+ padding-top: 15px;
+}
+.Footerdetails {
+ background-color:yellow;
+ height:50px;
+}
+</style>
+</head>
+<body>
+<header class="header1">
+ <img src="https://ecampus.psgtech.ac.in/Images/PSG.png" alt="PSG
+Logo">
+ <h3><marquee behavior="alternate">PSG COLLEGE OF ARTS &
+SCIENCE</marquee></h3>
+ <nav>
+ <ul>
+ <li><a class="headlist" href="login.php"
+style="color:yellow">Admissions</a></li>
+ <li><a class="headlist" href="#"
+style="color:yellow">Home</a></li>
+ <li><a class="headlist" href="#"
+style="color:yellow">Programs</a></li>
+ <li><a class="headlist" href="#"
+style="color:yellow">Exams</a></li>
+ <li><a class="headlist" href="#"
+style="color:yellow">Placement</a></li>
+ <li><a class="headlist" href="#"
+style="color:yellow">About</a></li>
+ </ul>
+ </nav>
+</header>
+<main class="mainclass">
+ <br><br>
+ <h2>WELCOME TO PSG COLLEGE OF ARTS & SCIENCE</h2>
+ <p><b>Explore our wide range of academic progress, state-of-the-art
+facilities and diverse students community.</b></p>
+
+ <audio autoplay loop>
+ <source src="background_music.mp3" type="audio/mpeg">
+ Your browser does not support the audio element.
+ </audio>
+
+ <img src="https://www.mathworks.com/academia/tah-portal/psgcollege-of-arts-and-science31701421/_jcr_content/schoolLogo.adapt.full.medium.png/17169704546
+17.png" alt="College Logo" width="150">
+</main>
+<div class="Footerdetails">
+ <p class="contact">Contact: 04212485678</p>
+</div>
+</body>
+</html>

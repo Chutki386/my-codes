@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Counting</title>
+</head>
+<body>
+    <form action="prg3.php" method="GET">
+    <label for="choice">Enter a String</label>
+    <input type="text" name="choice" id="choice">
+    <input type="submit" value="submit">
+</form>
+<?php
+    $n = $_GET["choice"];
+    $length = strlen($n);
+    $upper=0;
+    $lower=0;
+    for ($i=0;$i<$length;$i++)
+    {
+        $char = $n[$i];
+        if(ctype_upper($char))
+        {
+            $upper+=1;
+        }
+        else{
+            $lower+=1;
+        }
+    }
+    echo "Uppercase letters: $upper";
+    echo "Lowercase letters: $lower";
+
+?>
+</body>
+</html>

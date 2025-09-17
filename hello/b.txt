@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head><title>FILE</title></head>
+<body>
+    <form action="prg2(a).php" method="POST">
+    <label for="choice">Enter a choice</label>
+    <input type="text" id="choice" name="choice"><br>
+    <input type="submit" value="submit"></form>
+<?php
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    $choice = $_POST["choice"];
+    switch($choice)
+    {
+        case 1:
+            $myfile = fopen("sample.txt","r");
+            echo fread($myfile,filesize("sample.txt"));
+            fclose($myfile);
+            break;
+        case 2:
+            $myfile= fopen("sample.txt","a+");
+            $a = "Happieness";
+            fwrite($myfile,$a);
+            rewind($myfile);
+            echo fread($myfile,filesize("sample.txt"));
+            fclose($myfile);
+            break;
+        case 3:
+            echo copy("sample.txt","target.txt");
+            echo "The file is copied";
+            break;   
+    }
+}
+?>
+</body>
+</html>
