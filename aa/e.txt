@@ -1,0 +1,25 @@
+import pandas as pd 
+from sklearn import tree 
+from sklearn.preprocessing import LabelEncoder 
+from sklearn.naive_bayes import GaussianNB 
+from sklearn.metrics import accuracy_score,precision_score,recall_score 
+data = pd.read_csv('data.csv') 
+print(data) 
+x = data.iloc[:, :-1] 
+y = data.iloc[:, -1] 
+x = x.copy() 
+le_outlook = LabelEncoder() 
+x.Outlook = le_outlook.fit_transform(x.Outlook) 
+le_Temperature = LabelEncoder() 
+x.Temperature = le_Temperature.fit_transform(x.Temperature) 
+print("\nNow the Train output is\n",x) 
+le_PlayTennis = LabelEncoder() 
+y = le_PlayTennis.fit_transform(y) 
+print("\nNow the Train output is\n",y) 
+from sklearn.model_selection import train_test_split 
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.20) 
+classifier = GaussianNB() 
+classifier.fit(x_train,y_train) 
+print("\n Accuracy is:",accuracy_score(classifier.predict(x_test),y_test)) 
+print("\n Recall:",recall_score(classifier.predict(x_test),y_test)) 
+print("\n Precision:",precision_score(classifier.predict(x_test),y_test))
